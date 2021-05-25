@@ -1,3 +1,55 @@
+# *** PG20 T3 WebAppFrameworks - CaptainSonar Vue ***
+---------------------------------------
+Jose Ignacio Ferrer Vera
+24/05/2021
+
+Vue.js implementation of the popular 8 player tabletop strategy game "Captain Sonar"
+
+[demo] (https://github.com/the-Humble/CaptainSonarVue)
+
+
+## Synopsis
+---------------
+This is an incomplete implementation of the popular tabletop game Captain Sonar. In this implementation, we focus on the use of Vue components to create an easy to understand interface for the game. We also 
+
+
+## Contributors (optional)
+---------------
+Jose Ignacio Ferrer Vera - Programmer and Designer
+Scott Henshaw - Created Template
+Shawn - Mentor
+
+# Download/Install
+---------------------------------------
+Install Node.js
+Once installed, download project from Github repo [https://github.com/the-Humble/CaptainSonarVue]
+Open project and run command node install to install all dependencies
+Run vue ui
+Serve the webpage
+
+# *** How to use ***
+---------------------------------------
+TODO: Instructions
+
+## Code Example (optional)
+---------------
+TODO
+
+
+## API Reference (optional)
+---------------
+TODO
+
+## Tests (optional)
+---------------
+TODO
+
+# *** Caveats *** (optional)
+---------------------------------------
+Not even halfway done
+
+_________________________Old ReadMe____________________________________________
+
 # VueAppTemplate
 
 Base template for HTML5/CSS3 app using latest ES2017 JavaScript on Vue.js framework.
