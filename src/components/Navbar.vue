@@ -30,7 +30,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 navMenu:[
                     { section: "Home" },
-                    { section: "About" }
+                    { section: "About" },
+                    { section: "Game" }
                 ]
             };
         }
