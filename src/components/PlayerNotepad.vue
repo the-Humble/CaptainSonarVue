@@ -8,7 +8,8 @@
 <template>
 
     <section class="notepad-container">
-        <div></div>  <!-- Just one main element per template -->
+        <textarea id="notepad" name="notepad" placeholder="Write your notes here" wrap="soft">
+        </textarea>
     </section>
 
 </template>
@@ -22,7 +23,7 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world"
+                notes: String
             }
             this.props = { // props are passed in when using this component
                 user: String
@@ -100,6 +101,12 @@
         flex-grow: inherit;
         flex-shrink: inherit;
         order: inherit;
+    }
+    textarea {
+        resize: none;
+        overflow-y: auto;
+        width:100%;
+        height:100%
     }
 
 </style>
