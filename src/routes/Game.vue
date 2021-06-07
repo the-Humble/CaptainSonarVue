@@ -62,13 +62,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         align-content: flex-start;
         align-items:flex-start;
         width: 100%;
+        
+        overflow-y: auto;
     }
 
     .display {
         border:2px solid green;
-        width: 45rem;
-        height: 30rem;
-        margin: 2rem 0rem
+        width: 45em;
+        height: 30em;
+        margin: 2em 0em
 
     }
 

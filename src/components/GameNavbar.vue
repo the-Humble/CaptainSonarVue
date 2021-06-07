@@ -8,9 +8,9 @@
 <template>
 
     <section class="navbar-container">  <!-- Just one main element per template -->
-        <div v-for = "(role, index) in roles" :key = "index">
-            {{role}}
-        </div>
+        <ul class="tabs">
+            <li :id="role" v-for = "(role, index) in roles" :key = "index" @click="toggleActive($event)" class="tab">{{role}}</li>
+        </ul>
     </section>
 
 </template>
@@ -27,59 +27,18 @@
                 someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                roles: [String]
+                roles: []
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
-
-            In the component constructor
-
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
-
         }
 
-        onBeforeCreate() {
-            // after the Vue instance initializes, before instances are created
-        }
-
-        onCreated() {
-            // called when each instance is initialized
-        }
-
-        onBeforeMount() {
-            // called before the component is injected into the DOM
-        }
-
-        onMounted() {
-            // called
-        }
-
-        onBeforeUpdate() {
-
-        }
-
-        onUpdated() {
-
-        }
-
-        onBeforeDestroy() {
-
-        }
-
-        onDestroyed() {
-
-        }
-
-        // your local component methods
-        doIt( event ) {
-            // A method that does something to the props or viewModel, or global state
+        toggleActive(clicked){
+            document.getElementsByClassName('tab').forEach(element => {
+                element.classList.remove("active");
+            });
+            clicked.srcElement.classList.add("active");
+            this.$router.push({name:`${clicked.srcElement.id}`});
+            
         }
     }
 
@@ -92,9 +51,10 @@
     styles that are specific to this component only, not sub-children
     */
     .navbar-container {
-        border: 2px solid red;
+        display: flex;
+        flex-direction: row;
         width: 80vw;
-        height: 10rem;
+        height:min-content;
     }
     .component-style {
         display: flex;
@@ -110,5 +70,53 @@
         flex-shrink: inherit;
         order: inherit;
     }
+
+    .tabs{
+        display: flex;
+        flex-direction: row;
+    }
+
+    /*Tabs styling gathered from: https://css-tricks.com/tabs-with-round-out-borders/ */
+    .tabs li { 
+            
+        /* So the psueudo elements can be
+            abs. positioned inside */
+        position: relative; 
+    
+        /* Make them block level
+            and only as wide as they need */
+        float: right; 
+        padding: 10px 40px; 
+        text-decoration: none;
+        
+        /* Default colors */ 
+        
+        background: navy; 
+        color: white; 
+        
+        /* Only round the top corners */
+        -webkit-border-top-left-radius: 15px;
+        -webkit-border-top-right-radius: 15px;
+        -moz-border-radius-topleft: 15px;
+        -moz-border-radius-topright: 15px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px; 
+    }
+    .tabs .active {
+        /* Highest, active tab is on top */
+        z-index: 3;
+        /* Colors when tab is active */
+        -webkit-text-stroke: 1px gray;
+        color: black;
+        background: #6ac5fe; 
+        font-weight: bold;
+    }
+    .tabs li:before, .tabs li:after{
+        /* All pseudo elements are 
+            abs. positioned and on bottom */
+        position: absolute;
+        bottom: 0;
+    }
+    
 
 </style>

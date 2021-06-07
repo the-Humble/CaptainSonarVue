@@ -7,7 +7,7 @@
 -->
 <template>
 
-    <section @click="doClick(path)" class="button-container" v-on:click="onClick(event)">  <!-- Just one main element per template -->
+    <section @click="doClick(path)" class="button-container">  <!-- Just one main element per template -->
         <div class="button-text">{{ text }}</div>
     </section>
 

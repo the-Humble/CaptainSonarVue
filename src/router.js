@@ -28,7 +28,7 @@ export default new Router({
         , children :
         [
             {path : "captain", name: "Captain", component: Captain},
-            {path : "firstOfficer", name: "FirstOfficer", component: Officer},
+            {path : "officer", name: "Officer", component: Officer},
             {path : "engineer", name: "Engineer", component: Engineer},
             {path : "radar", name: "Radar", component: Radar}
         ]
