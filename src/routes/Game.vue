@@ -8,8 +8,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="game">
-        <game-navbar :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
-
+        <game-navbar activeRole ='Captain' :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
+        <div id="cover" class="cover"></div>
         <div class="game-container">
             <div class = "flex-container">
                 <div class="display">
@@ -48,6 +48,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 name: String,
             }
         }
+
+        onCreated(){
+            //Initialize game on first
+            document.getElementById("cover").style.display = '';
+        }
     }
 
     export default new GameController('pgGame', {gameNavbar, roleScreen, messageLog, roleButton, playerNotepad, readyButton});
@@ -74,14 +79,20 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     }
 
-    
+    .cover {
+        position:absolute;
+        height: 100%;
+        width: 100%;
+        background-color: navy;
+    }
 
     .game {
+        position: relative;
         display:flex;
         flex-direction: column;
         margin:2vw;
         border: 1px solid black;
-        background-color: lightgray;
+        background-color: #6ac5fe;
         color: black;
         height: 78vh;
         width: 80vw;

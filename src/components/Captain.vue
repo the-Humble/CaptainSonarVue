@@ -85,7 +85,7 @@
 
     .component-style {
         flex: 1;
-        background: url('../assets/officer.jpg');
+        background: url('../assets/radar.jpg');
         background-size: 100% 100%;
     }
 

@@ -27,9 +27,17 @@
                 someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                roles: []
+                roles: [String]
             }
 
+        }
+        onCreated() {
+            // called when each instance is initialized
+            
+        }
+
+        initializeOnRole(role){
+            document.getElementById(role).classList.add("active");
         }
 
         toggleActive(clicked){
@@ -38,6 +46,7 @@
             });
             clicked.srcElement.classList.add("active");
             this.$router.push({name:`${clicked.srcElement.id}`});
+            document.getElementById("cover").style.display = 'none';
             
         }
     }
@@ -51,10 +60,13 @@
     styles that are specific to this component only, not sub-children
     */
     .navbar-container {
+        z-index: 3;
         display: flex;
         flex-direction: row;
-        width: 80vw;
-        height:min-content;
+        width:auto;
+        margin-bottom: 0px;
+        height:fit-content;
+        background-color: lightgray;
     }
     .component-style {
         display: flex;
@@ -74,11 +86,12 @@
     .tabs{
         display: flex;
         flex-direction: row;
+        margin-bottom: 0px;
     }
 
     /*Tabs styling gathered from: https://css-tricks.com/tabs-with-round-out-borders/ */
     .tabs li { 
-            
+            margin-bottom: 0px;
         /* So the psueudo elements can be
             abs. positioned inside */
         position: relative; 
