@@ -28,19 +28,6 @@
                 role: String
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
-
-            In the component constructor
-
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
-
         }
 
         onBeforeCreate() {
@@ -75,13 +62,13 @@
 
         }
 
-        // your local component methods
+        // your local component methods;
         doIt( event ) {
             // A method that does something to the props or viewModel, or global state
         }
     }
 
-    export default new RoleButtonController('roleButton'/* , { subComponent, anotherComponent } */);
+    export default new RoleButtonController('roleButton');
 
 </script>
 <style scoped>

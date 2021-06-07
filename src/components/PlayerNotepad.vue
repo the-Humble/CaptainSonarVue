@@ -1,14 +1,14 @@
 <!--
-<role-screen role="My Role">
+<player-notepad player="My Component">
     -- user can add their own HTML code here, replaces 'slot' component --
-</some-tag-name>
+</player-notepad>
 
 @copyright (c) 2019. Scott Henshaw. All Rights Reserved.
 -->
 <template>
 
-    <section class="display">  <!-- Just one main element per template -->
-        <div></div>
+    <section class="notepad-container">
+        <div></div>  <!-- Just one main element per template -->
     </section>
 
 </template>
@@ -17,7 +17,7 @@
 
     // import other components you use here...
 
-    class RoleScreenController extends Controller {
+    class NotepadController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
@@ -25,7 +25,7 @@
                 someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                role: String
+                user: String
             }
 
             /*
@@ -72,6 +72,7 @@
         }
 
         onDestroyed() {
+
         }
 
         // your local component methods
@@ -80,7 +81,7 @@
         }
     }
 
-    export default new RoleScreenController('roleScreen'/* , { subComponent, anotherComponent } */);
+    export default new NotepadController('playerNotepad'/* , { subComponent, anotherComponent } */);
 
 </script>
 <style scoped>
@@ -88,11 +89,10 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .display {
-        border:2px solid green;
-        width: 720px;
-        height: 480px;
-
+    .notepad-container {
+        border: 2px solid purple;
+        width: 15vw;
+        height: 15vw;
     }
 
     .component-item {

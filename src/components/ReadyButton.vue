@@ -1,5 +1,5 @@
 <!--
-<role-screen role="My Role">
+<some-tag-name title="My Component">
     -- user can add their own HTML code here, replaces 'slot' component --
 </some-tag-name>
 
@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section class="display">  <!-- Just one main element per template -->
-        <div></div>
+    <section class="button-container">  <!-- Just one main element per template -->
+        
     </section>
 
 </template>
@@ -17,7 +17,7 @@
 
     // import other components you use here...
 
-    class RoleScreenController extends Controller {
+    class ReadyButtonController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
@@ -25,7 +25,7 @@
                 someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                role: String
+                user: String
             }
 
             /*
@@ -72,6 +72,7 @@
         }
 
         onDestroyed() {
+
         }
 
         // your local component methods
@@ -80,7 +81,7 @@
         }
     }
 
-    export default new RoleScreenController('roleScreen'/* , { subComponent, anotherComponent } */);
+    export default new ReadyButtonController('readyButton');
 
 </script>
 <style scoped>
@@ -88,11 +89,10 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .display {
-        border:2px solid green;
-        width: 720px;
-        height: 480px;
-
+    .button-container {
+        border: 3px solid yellow;
+        width: 20vw;
+        height: 10vh;
     }
 
     .component-item {

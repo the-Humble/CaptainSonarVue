@@ -1,5 +1,5 @@
 <!--
-<role-screen role="My Role">
+<some-tag-name title="My Component">
     -- user can add their own HTML code here, replaces 'slot' component --
 </some-tag-name>
 
@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section class="display">  <!-- Just one main element per template -->
-        <div></div>
+    <section class="component-style">  <!-- Just one main element per template -->
+        <div>FirstOfficer</div>
     </section>
 
 </template>
@@ -17,15 +17,14 @@
 
     // import other components you use here...
 
-    class RoleScreenController extends Controller {
+    class OfficerController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
                 someData: "Hello world"
             }
-            this.props = { // props are passed in when using this component
-                role: String
+            this.props = { 
             }
 
             /*
@@ -72,6 +71,7 @@
         }
 
         onDestroyed() {
+
         }
 
         // your local component methods
@@ -80,7 +80,7 @@
         }
     }
 
-    export default new RoleScreenController('roleScreen'/* , { subComponent, anotherComponent } */);
+    export default new OfficerController('officer'/* , { subComponent, anotherComponent } */);
 
 </script>
 <style scoped>
@@ -88,11 +88,13 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .display {
-        border:2px solid green;
-        width: 720px;
-        height: 480px;
-
+    .component-style {
+        display: flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:space-evenly;
+        align-content: flex-start;
+        align-items:flex-start;
     }
 
     .component-item {
