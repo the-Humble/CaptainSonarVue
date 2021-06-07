@@ -21,7 +21,6 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 </template>
 <script>
     import Controller from '@/mixins/controller'
-
     import pgNavbar from '@/components/Navbar.vue'
 
     class SidebarController extends Controller {
