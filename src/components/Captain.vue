@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>Captain</div>
+    <section class="container">  <!-- Just one main element per template -->
+        <div class="component-style"> </div>
     </section>
 
 </template>
@@ -27,18 +27,6 @@
             this.props = { 
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
-
-            In the component constructor
-
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
 
         }
 
@@ -88,19 +76,18 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .component-style {
+    .container{
         display: flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:space-evenly;
-        align-content: flex-start;
-        align-items:flex-start;
+        height: 100%;
+        width: 100%
+
     }
 
-    .component-item {
-        flex-grow: inherit;
-        flex-shrink: inherit;
-        order: inherit;
+    .component-style {
+        flex: 1;
+        background: url('../assets/officer.jpg');
+        background-size: 100% 100%;
     }
+
 
 </style>

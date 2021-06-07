@@ -28,19 +28,6 @@
                 user: String
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
-
-            In the component constructor
-
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
-
         }
 
         onBeforeCreate() {
@@ -91,8 +78,10 @@
     */
     .message-log {
         border: 1px solid red;
-        width: 40vw;
-        height: 20vh;
+        width: 45rem;
+        height: 5rem;
+        margin-bottom: 1rem;
+        overflow-y:auto;
     }
 
     .component-item {

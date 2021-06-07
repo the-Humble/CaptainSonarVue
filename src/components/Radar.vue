@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section class="component-style">  <!-- Just one main element per template -->
-        <div>Radar</div>
+    <section class="container">  <!-- Just one main element per template -->
+        <div class="component-style"> </div>
     </section>
 
 </template>
@@ -88,13 +88,17 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .component-style {
+    .container{
         display: flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content:space-evenly;
-        align-content: flex-start;
-        align-items:flex-start;
+        height: 100%;
+        width: 100%
+
+    }
+
+    .component-style {
+        flex: 1;
+        background: url('../assets/radar.jpg');
+        background-size: 100% 100%;
     }
 
     .component-item {

@@ -80,6 +80,7 @@
         border: 2px solid blue;
         width: 20vw;
         height: 10vh;
+        margin: 2rem 0rem;
     }
 
     .component-item {

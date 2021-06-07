@@ -8,9 +8,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="game">
-        <div class = "game-navbar">
-            <game-navbar roles=""></game-navbar>
-        </div>
+        <game-navbar :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
 
         <div class="game-container">
             <div class = "flex-container">
@@ -68,16 +66,13 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     .display {
         border:2px solid green;
-        width: 720px;
-        height: 480px;
+        width: 45rem;
+        height: 30rem;
+        margin: 2rem 0rem
 
     }
 
-    .game-navbar {
-        border: 2px solid red;
-        width: 80vw;
-        height: 10vh;
-    }
+    
 
     .game {
         display:flex;

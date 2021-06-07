@@ -7,8 +7,10 @@
 -->
 <template>
 
-    <section class="component-style">  <!-- Just one main element per template -->
-        
+    <section class="navbar-container">  <!-- Just one main element per template -->
+        <div v-for = "(role, index) in roles" :key = "index">
+            {{role}}
+        </div>
     </section>
 
 </template>
@@ -89,6 +91,11 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
+    .navbar-container {
+        border: 2px solid red;
+        width: 80vw;
+        height: 10rem;
+    }
     .component-style {
         display: flex;
         flex-direction:row;

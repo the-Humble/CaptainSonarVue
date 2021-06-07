@@ -93,6 +93,7 @@
         border: 3px solid yellow;
         width: 20vw;
         height: 10vh;
+        margin-top: 3rem
     }
 
     .component-item {

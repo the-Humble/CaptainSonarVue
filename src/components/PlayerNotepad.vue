@@ -93,6 +93,7 @@
         border: 2px solid purple;
         width: 15vw;
         height: 15vw;
+        margin: 1rem 0rem
     }
 
     .component-item {
