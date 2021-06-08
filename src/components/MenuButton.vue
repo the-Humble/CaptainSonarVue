@@ -29,39 +29,6 @@
 
         }
 
-        onBeforeCreate() {
-            // after the Vue instance initializes, before instances are created
-        }
-
-        onCreated() {
-            // called when each instance is initialized
-            
-        }
-
-        onBeforeMount() {
-            // called before the component is injected into the DOM
-        }
-
-        onMounted() {
-            // called
-        }
-
-        onBeforeUpdate() {
-
-        }
-
-        onUpdated() {
-
-        }
-
-        onBeforeDestroy() {
-
-        }
-
-        onDestroyed() {
-
-        }
-
         // your local component methods
         doClick(path) {
             
