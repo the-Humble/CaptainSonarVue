@@ -8,7 +8,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="game">
-        <game-navbar activeRole ='Captain' :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
+        <game-navbar :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
         <div id="cover" class="cover"></div>
         <div class="game-container">
             <div class = "flex-container">
@@ -19,7 +19,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 <message-log></message-log>
             </div>
             <div class = "flex-container">
-                <role-button role="Captain"></role-button>
+                <role-button>{{ activeRole }}</role-button>
                 <player-notepad user="Player1"></player-notepad>
                 <ready-button user="Player1"></ready-button>
             </div>
@@ -43,6 +43,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
+                activeRole: String
             }
             this.props = {
                 name: String,
@@ -52,6 +53,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         onCreated(){
             //Initialize game on first
             document.getElementById("cover").style.display = '';
+            this.activeRole = "Captain"
         }
     }
 

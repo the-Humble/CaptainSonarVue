@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section @click="doClick(path)" class="button-container">  <!-- Just one main element per template -->
-        <div class="button-text">{{ text }}</div>
+    <section @click="doClick(path)" class="button-container button-text">  <!-- Just one main element per template -->
+        <slot></slot>
     </section>
 
 </template>
@@ -22,10 +22,8 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                text: String,
                 path: String
             }
 
@@ -37,6 +35,7 @@
 
         onCreated() {
             // called when each instance is initialized
+            
         }
 
         onBeforeMount() {
@@ -82,7 +81,7 @@
     .button-container {
         display:inline-block;
         padding: .7em 5rem;
-        margin: 2em;
+        margin: .5em;
         border:0.16em solid rgba(255,255,255,0);
         background: gray;
         border-radius:.5em;
@@ -105,9 +104,9 @@
     }
 
     .button-text{
-        font-size: 3rem;
+        font-size: 2rem;
         text-decoration:none;
-        color: inherit
+        color: white
     }
 
     .component-item {

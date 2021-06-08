@@ -48,10 +48,11 @@ export default class Controller {
                     switch (prefix) {
 
                         case "compute_":
-                        case "on_":
+                        
                             this.computed[ newName ] = localMethods[ methodName ];
                             break;
-
+                        case "on_":
+                        case "on":
                         case "vue_":
                             // Add hooks here...
                             /*
@@ -67,6 +68,7 @@ export default class Controller {
                             this.beforeDestroy()
                             this.destroyed()
                             */
+                            
                             this[ newName ] = localMethods[ methodName ];
                             break;
 

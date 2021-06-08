@@ -8,7 +8,7 @@
 <template>
 
     <section class="button-container">  <!-- Just one main element per template -->
-        
+        <slot></slot>
     </section>
 
 </template>
