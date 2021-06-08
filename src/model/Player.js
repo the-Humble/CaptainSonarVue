@@ -7,6 +7,9 @@ export default class Player
         this.roles = roles;
         this.roleNames = roleNames; 
         this.team = team;
+
+        this.notes = "";
+        this.isReady = false;
     }
 
 
