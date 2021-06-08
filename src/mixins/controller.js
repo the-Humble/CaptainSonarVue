@@ -54,7 +54,7 @@ export default class Controller {
 
                         case "vue_":
                             // Add hooks here...
-                            /*
+                            
                             this.beforeCreate()
                             this.created()
 
@@ -66,7 +66,7 @@ export default class Controller {
 
                             this.beforeDestroy()
                             this.destroyed()
-                            */
+                            
                             this[ newName ] = localMethods[ methodName ];
                             break;
 

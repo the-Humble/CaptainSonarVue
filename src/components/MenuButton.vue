@@ -37,6 +37,7 @@
 
         onCreated() {
             // called when each instance is initialized
+            
         }
 
         onBeforeMount() {
