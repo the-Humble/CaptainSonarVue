@@ -7,7 +7,7 @@
 -->
 <template>
 
-    <section class="component-style" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
+    <section class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
         <div>
             
         </div>
@@ -24,7 +24,12 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                active: false
+                active: 
+                {
+                    type: Boolean,
+                    default:false
+                }
+
                 
             }
             this.props = { // props are passed in when using this component
@@ -69,7 +74,11 @@
         }
 
         onMounted() {
-            // called
+            if(this.active){
+                document.getElementsByClassName('eng-button').classList.add('active');
+                return;
+            }
+            document.getElementsByClassName('eng-button').classList.remove('active');
         }
 
         onBeforeUpdate() {
@@ -89,15 +98,15 @@
         }
 
         // your local component methods
-        toggleActive( element ) {
+        toggleActive( event ) {
             
             if(!this.active){
-                element.srcElement.classList.add('active');
+                event.srcElement.classList.add('active');
                 this.active = true;
                 return;
             }
             this.active = false;
-            element.srcElement.classList.remove('active');
+            event.srcElement.classList.remove('active');
 
         }
     }

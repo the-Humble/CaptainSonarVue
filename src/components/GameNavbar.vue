@@ -27,7 +27,7 @@
                 someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                roles: []
+                roles: Array
             }
 
         }

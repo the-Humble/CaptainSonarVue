@@ -11,6 +11,7 @@ Vue.use( Router );
 import Home from '@/routes/Home.vue'
 import About from '@/routes/About.vue'
 import Splash from '@/routes/Splash.vue'
+import Lobby from '@/routes/JoinGame.vue'
 import Game from '@/routes/Game.vue'
 
 import Captain from '@/components/Captain.vue'
@@ -24,6 +25,7 @@ export default new Router({
         { path:"/",      name:"Home",  component: Home, props: { name: "DemoApp"} },
         { path:"/about", name:"About", component: About },
         { path:"/game", name:"Game", component: Splash},
+        { path:"/lobby", name:"Lobby", component: Lobby},
         {path: "/gameplay", name: "Gameplay", component: Game, props: {name:"CaptainSonarVue", user: "Player1", team:"blue"}
         , children :
         [

@@ -7,11 +7,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 -->
 <template>
 
-    <section class="splash-container game">
-        <div id= "title-box" class = "title-container"> Captain Sonar (Vue.js) </div>
-        <div id="splash-menu" class = "flex-container">
-            <menu-button path="Lobby">Play!</menu-button>
-            <menu-button path="">Settings</menu-button>
+    <section class="lobby-container game">
+        <div id="lobby-menu" class = "flex-container">
+            <div id="player-init" @click="initializePlayer($event)"> Click Me</div>
+            <menu-button path="Gameplay">Ready</menu-button>
         </div>
     </section>
 
@@ -19,11 +18,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
 
     import Controller from '@/mixins/controller'
-    import gameController from '@/routes/Game.vue'
     import menuButton from '@/components/MenuButton.vue'
+    import Player from '@/model/Player.js'
+    import EngineerRole from '@/model/EngineerRole.js'
 
 
-    class SplashController extends Controller {
+    class LobbyController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
@@ -31,15 +31,26 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             }
             this.props = {
             }
+
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['setUser', 'addPlayer'])
+        }
+
+        initializePlayer(event)
+        {
+            let player = new Player("Nacho", [new EngineerRole("Engineer")], "blue");
+            //TODO: CREATE REAL PLAYER INITIALIZATION WITH ROLES
+            this.addPlayer(player);
+            this.setUser(player);
         }
     }
 
-    export default new SplashController('pgSplash', {gameController, menuButton});
+    export default new LobbyController('pgLobby', {menuButton});
 
 </script>
 <style scoped>
     /* Local styles for this template */
-    .splash-container {
+    .lobby-container {
         display: flex;
         flex-direction:row;
         justify-content:center;
