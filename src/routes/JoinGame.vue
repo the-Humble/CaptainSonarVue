@@ -92,7 +92,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 
             event.preventDefault();
-            let player = new Player(this.playerName, roles, this.playerTeam);
+            let player = new Player(this.playerName, roles, this.playerRoles, this.playerTeam);
             this.addPlayer(player);
             this.setUser(player);
             this.playerName = null;

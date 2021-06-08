@@ -8,7 +8,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="game">
-        <game-navbar :roles="['Captain', 'Officer', 'Engineer', 'Radar']"></game-navbar>
+        <game-navbar :roles="theUser.roleNames"></game-navbar>
         <div id="cover" class="cover"></div>
         <div class="game-container">
             <div class = "flex-container">
@@ -48,6 +48,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.props = {
                 name: String,
             }
+
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['setUser', 'addPlayer'])
         }
 
         onCreated(){
