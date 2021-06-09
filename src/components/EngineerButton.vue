@@ -7,10 +7,7 @@
 -->
 <template>
 
-    <section :id="position.x +'-'+position.y" class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
-        <div>
-            
-        </div>
+    <section class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)' }" @click="toggleActive($event)">  <!-- Just one main element per template -->
     </section> 
 
 </template>
@@ -74,10 +71,10 @@
         onMounted() {
 
             if(this.engButton.active){
-                document.getElementById(this.position.x+"-"+this.position.y).classList.add('active');
+                document.getElementById(this.index).classList.add('active');
                 return;
             }
-            document.getElementById(this.position.x+"-"+this.position.y).classList.remove('active');
+            document.getElementById(this.index).classList.remove('active');
             
         }
 
@@ -108,13 +105,13 @@
         // your local component methods
         toggleActive( event ) {
             if(!this.engButton.active){
-                event.srcElement.classList.add('active');
+                event.target.classList.add('active');
                 this.engButton.active = true;
                 this.setButton();
                 return;
             }
             this.engButton.active = false;
-            event.srcElement.classList.remove('active');
+            event.target.classList.remove('active');
             this.setButton();
         }
     }

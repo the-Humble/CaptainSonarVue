@@ -10,22 +10,13 @@ export default class Team
         this.officer={}
         this.engineer={}
         this.radar={}
-    }
 
-    GetCaptain(){
-        return this.captain;
-    }
+        this.messageLog=""
 
-    GetOfficer(){
-        return this.officer;
-    }
-
-    GetEngineer(){
-        return this.engineer;
-    }
-
-    GetRadar(){
-        return this.radar;
+        this.position={
+            x,
+            y
+        }
     }
 
 }

@@ -15,24 +15,24 @@ export default class EngineerRole extends Role
         
 
         //directions arrays
-        this.westSystems=[];
-        this.northSystems=[];
-        this.southSystems=[];
-        this.eastSystems=[];
-        this.fillDirections();        
+        this.westSystems =[0,1,2,3,4,5];
+        this.northSystems=[6,7,8,9,10,11];
+        this.southSystems=[12,13,14,15,16,17];
+        this.eastSystems =[18,19,20,21,22,23];
+        //this.fillDirections();        
 
         //subsystem arrays
-        this.subsystem0 = []; //0
-        this.subsystem1=[]; //1
-        this.subsystem2=[]; //2
-        this.subreactor=[]; //3
-        this.fillSubSystems();
+        this.subsystem0 = [0,1,2,20];
+        this.subsystem1 = [6,7,8,18];
+        this.subsystem2 = [12,13,14,19];
+        this.subreactor = [4,5,11,16,21,23];
+        //this.fillSubSystems();
 
         //Actions arrays
-        this.attackSystem = [];
-        this.radarSystem = [];
-        this.scenarioSystem=[];
-        this.fillActionSystems();
+        this.attackSystem = [0,7,10,14,15,20];
+        this.radarSystem = [2,3,9,12,18,22];
+        this.scenarioSystem=[1,6,8,13,17,19];
+        //this.fillActionSystems();
 
         //Can go in direction
         this.north = true;
@@ -41,11 +41,14 @@ export default class EngineerRole extends Role
         this.west = true;
     }
 
+    
     createButtons(){
         for(let i = 0; i< 24; i++){
             this.buttons.push(new EngineerButton(false))
         }
 
+    }
+        /*
         //Didn't think of a better way to do this, so it looks awful, but it should work
 
         //type
@@ -56,6 +59,7 @@ export default class EngineerRole extends Role
         for(let i=0; i<6; i++){
             this.buttons[i].direction = "west";
         }
+    
         this.buttons[0].type = "attack";
         this.buttons[0].subsystem = 0;
 
@@ -196,4 +200,5 @@ export default class EngineerRole extends Role
             }
         })
     }
+    */
 }

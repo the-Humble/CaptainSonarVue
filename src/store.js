@@ -42,11 +42,34 @@ export default new Vuex.Store({
         return;
       }else{
         state.redTeam.players.push(newPlayer)
+        newPlayer.roleNames.forEach(element => {
+          switch(element){
+            case "Captain":
+              state.redTeam.captain = new CaptainRole(element, newPlayer)
+              break;
+            case "Officer":
+              state.redTeam.officer = new OfficerRole(element, newPlayer)
+              break;
+            case "Engineer":
+              state.redTeam.engineer = new EngineerRole(element, newPlayer)
+              break;
+            case "Radar":
+              state.redTeam.radar = new RadarRole(element, newPlayer)
+              break;
+          }
+        });
       }
     },
 
     UPDATE_TEAM_DATA:(state, teamUpdated)=>{
-      state.blueTeam = teamUpdated;
+      
+      if(state.currentUser.team == "blue")
+      {
+        state.blueTeam = teamUpdated;
+        return;
+      }
+      state.redTeam = teamUpdated;
+
     }
   },
   actions: {
