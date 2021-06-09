@@ -69,7 +69,6 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import Controller from '@/mixins/controller'
     import menuButton from '@/components/MenuButton.vue'
     import Player from '@/model/Player.js'
-    import EngineerRole from '@/model/EngineerRole.js'
 
 
     class LobbyController extends Controller {
@@ -90,28 +89,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
         initializePlayer(event)
         {
-            let roles =[]
-            this.playerRoles.forEach(element => {
-                switch(element){
-                    case "Engineer":
-                        roles.push(new EngineerRole("Engineer"))
-                        break;
-                    case "Captain":
-                        //TODO:Other roles
-                        break;
-                    case "Officer":
-                        //TODO:Other roles
-                        break;
-                    case "Radar":
-                        //TODO:Other roles
-                        break;
-                }
-
-            });
-
-
             event.preventDefault();
-            let player = new Player(this.playerName, roles, this.playerRoles, this.playerTeam);
+            let player = new Player(this.playerName, this.playerRoles, this.playerTeam);
             this.addPlayer(player);
             this.setUser(player);
             this.playerName = "";

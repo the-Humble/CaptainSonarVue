@@ -29,10 +29,10 @@ export default new Router({
         {path: "/gameplay", name: "Gameplay", component: Game, props: {name:"CaptainSonarVue", user: "Player1", team:"blue"}
         , children :
         [
-            {path : "captain", name: "Captain", component: Captain},
-            {path : "officer", name: "Officer", component: Officer},
-            {path : "engineer", name: "Engineer", component: Engineer},
-            {path : "radar", name: "Radar", component: Radar}
+            {path : "captain", name: "Captain", component: Captain, props:true},
+            {path : "officer", name: "Officer", component: Officer, props:true},
+            {path : "engineer", name: "Engineer", component: Engineer, props:true},
+            {path : "radar", name: "Radar", component: Radar, props:true}
         ]
         }
         

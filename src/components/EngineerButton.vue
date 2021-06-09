@@ -7,7 +7,7 @@
 -->
 <template>
 
-    <section :id="position.x+'-'+position.y" class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
+    <section :id="position.x +'-'+position.y" class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
         <div>
             
         </div>
@@ -24,13 +24,11 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                active: false
-
-                
+   
             }
             this.props = { // props are passed in when using this component
-                type: String,
-                id:String,
+                engButton: Object,
+                index: Number,
                 position:
                 {
                     type: Object
@@ -42,7 +40,7 @@
             }
 
             this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
-            this.injectActions(['setUser', 'addPlayer'])
+            this.injectActions(['setUser', 'addPlayer', 'updateTeamData'])
             /*
             Components use the getters with ...mapState('module/sub-module', ['getter-name'])
             to access the State data
@@ -74,19 +72,16 @@
         }
 
         onMounted() {
-            if(this.active){
-                document.getElementsByClassName(this.position.x+'-'+this.position.y).forEach(element => {
-                    element.classList.add('active');
-                });
+
+            if(this.engButton.active){
+                document.getElementById(this.position.x+"-"+this.position.y).classList.add('active');
                 return;
             }
-            document.getElementsByClassName(this.position.x+'-'+this.position.y).forEach(element =>{
-                element.classList.remove('active');
-            })
+            document.getElementById(this.position.x+"-"+this.position.y).classList.remove('active');
+            
         }
 
         onBeforeUpdate() {
-
         }
 
         onUpdated() {
@@ -101,17 +96,26 @@
 
         }
 
+        setButton(){
+            let team = this.redTeam;
+            if(this.theUser.team=="blue"){
+                team = this.blueTeam;
+            }
+            team.engineer.buttons[this.index]=this.engButton;
+            this.updateTeamData(team);
+        }
+
         // your local component methods
         toggleActive( event ) {
-            
-            if(!this.active){
+            if(!this.engButton.active){
                 event.srcElement.classList.add('active');
-                this.active = true;
+                this.engButton.active = true;
+                this.setButton();
                 return;
             }
-            this.active = false;
+            this.engButton.active = false;
             event.srcElement.classList.remove('active');
-
+            this.setButton();
         }
     }
 

@@ -29,6 +29,8 @@
             this.props = { // props are passed in when using this component
                 roles: Array
             }
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['setUser', 'addPlayer'])
 
         }
         onCreated() {
@@ -38,11 +40,16 @@
 
 
         toggleActive(clicked){
+            let team = this.redTeam;
+            if(this.theUser.team == "blue"){
+                team = this.blueTeam;
+            }
+
             document.getElementsByClassName('tab').forEach(element => {
                 element.classList.remove("active");
             });
             clicked.srcElement.classList.add("active");
-            this.$router.push({name:`${clicked.srcElement.id}`});
+            this.$router.push({name:`${clicked.srcElement.id}`, params:{engineerRole: team.engineer }});
             document.getElementById("cover").style.display = 'none';
             
         }

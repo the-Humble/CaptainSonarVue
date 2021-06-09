@@ -1,10 +1,9 @@
 
 export default class Player
 {
-    constructor(name, roles, roleNames, team)
+    constructor(name, roleNames, team)
     {
         this.name = name;
-        this.roles = roles;
         this.roleNames = roleNames; 
         this.team = team;
 
@@ -12,7 +11,7 @@ export default class Player
         this.isReady = false;
     }
 
-    GetRole(roleString){
+    GetRoles(roleString){
         this.roles.forEach(element => {
             if(element.name == roleString){return element}
         });
