@@ -36,9 +36,6 @@
             
         }
 
-        initializeOnRole(role){
-            document.getElementById(role).classList.add("active");
-        }
 
         toggleActive(clicked){
             document.getElementsByClassName('tab').forEach(element => {

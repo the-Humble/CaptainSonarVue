@@ -8,38 +8,58 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="lobby-container game">
-        <form id="lobby-menu" class = "flex-container">
-            <label>Player Name:</label><br>
-            <input placeholder="Player's Name" v-model="playerName"><br>
+        <div class="team-info">
+            <form id="lobby-menu" class = "flex-container">
+                <label class="title-label">Player Name:</label><br>
+                <input placeholder="Player's Name" v-model="playerName"><br>
 
-            <label>Team:</label><br>
-            <div>
-            <input type="radio" id="blue" value="blue" v-model="playerTeam">
-                <label for="blue">Blue</label>
-            </div>
-            <br>
-            <div>
-            <input type="radio" id="red" value="red" v-model="playerTeam">
-                <label for="red">Red</label>
-            </div>
-            <br>
+                <label class="title-label">Team:</label><br>
+                <div class="check-item">
+                <input type="radio" id="blue" value="blue" v-model="playerTeam">
+                    <label class="check-label" for="blue">Blue</label>
+                </div>
+                <br>
+                <div class="check-item">
+                <input type="radio" id="red" value="red" v-model="playerTeam">
+                    <label class="check-label" for="red">Red</label>
+                </div>
+                <br>
 
-            <label>Player Roles:</label><br>
-        
-            <input type="checkbox" id="checkbox-captain" value="Captain" v-model="playerRoles">
-            <label for="checkbox-captain">Captain</label>
-            <input type="checkbox" id="checkbox-officer" value="Officer" v-model="playerRoles">
-            <label for="checkbox-officer">Officer</label>
-            <input type="checkbox" id="checkbox-engineer" value="Engineer" v-model="playerRoles">
-            <label for="checkbox-engineer">Engineer</label>
-            <input type="checkbox" id="checkbox-radar" value="Radar" v-model="playerRoles">
-            <label for="checkbox-radar">Radar</label>
-            <br>
-
-            <input type="submit" value="Create Player" @click = "initializePlayer($event)">
-
+                <label class="title-label">Player Roles:</label><br>
             
-        </form>
+                <div class="check-item">
+                <input type="checkbox" id="checkbox-captain" value="Captain" v-model="playerRoles">
+                <label class="check-label" for="checkbox-captain">Captain</label>
+                </div>
+                <div class="check-item">
+                <input type="checkbox" id="checkbox-officer" value="Officer" v-model="playerRoles">
+                <label class="check-label" for="checkbox-officer">Officer</label>
+                </div>
+                <div class="check-item">
+                <input type="checkbox" id="checkbox-engineer" value="Engineer" v-model="playerRoles">
+                <label class="check-label" for="checkbox-engineer">Engineer</label>
+                </div>
+                <div class="check-item">
+                <input type="checkbox" id="checkbox-radar" value="Radar" v-model="playerRoles">
+                <label class="check-label" for="checkbox-radar">Radar</label>
+                </div>
+                <br>
+
+                <input type="submit" value="Create Player" @click = "initializePlayer($event)">
+            </form>
+            <div class="team-display">
+                <div class="team blue">
+                    <div v-for="(player, index) in blueTeam.players" :key = "index">
+                        {{player.name}}
+                    </div>
+                </div>
+                <div class="team red">
+                    <div v-for="(player, index) in redTeam.players" :key = "index">
+                        {{player.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
         <menu-button path="Gameplay">Ready</menu-button>
     </section>
 
@@ -57,12 +77,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                playerName: String,
-                playerTeam: String,
-                playerRoles: [],
+                playerName: "",
+                playerTeam: "",
+                playerRoles: []
             }
             this.props = {
-
             }
 
             this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
@@ -95,9 +114,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             let player = new Player(this.playerName, roles, this.playerRoles, this.playerTeam);
             this.addPlayer(player);
             this.setUser(player);
-            this.playerName = null;
-            this.playerTeam = null;
-            this.playerRoles = null;
+            this.playerName = "";
+            this.playerTeam = "";
+            this.playerRoles = [];
         }
     }
 
@@ -112,6 +131,54 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         justify-content:center;
         align-content: flex-start;
         align-items:center;
+    }
+
+    .team-info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    #lobby-menu{
+        width: 20vw;
+        border: 2px solid black;
+        padding: .5em 1em;
+    }
+
+    .team-display{
+        border: 2px solid black;
+        width: 20vw;
+    }
+
+    .team{
+        height:50%;
+        padding: .5em 1em;
+    }
+
+    .blue{
+            border: 2px solid blue;
+            
+        }
+
+    .red{
+        border: 2px solid red;
+    }
+
+    .check-item{
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+
+    .title-label{
+        color:black;
+        margin: .5em;
+        font-size: 1.3em;
+    }
+
+    .check-label{
+        padding-left : 1em;
+        color: black;
     }
 
     .game {

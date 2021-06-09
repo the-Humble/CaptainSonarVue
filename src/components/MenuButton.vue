@@ -22,6 +22,7 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
+                
             }
             this.props = { // props are passed in when using this component
                 path: String

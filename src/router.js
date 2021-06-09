@@ -25,7 +25,7 @@ export default new Router({
         { path:"/",      name:"Home",  component: Home, props: { name: "DemoApp"} },
         { path:"/about", name:"About", component: About },
         { path:"/game", name:"Game", component: Splash},
-        { path:"/lobby", name:"Lobby", component: Lobby},
+        { path:"/lobby", name:"Lobby", component: Lobby, props: {playerName:""} },
         {path: "/gameplay", name: "Gameplay", component: Game, props: {name:"CaptainSonarVue", user: "Player1", team:"blue"}
         , children :
         [

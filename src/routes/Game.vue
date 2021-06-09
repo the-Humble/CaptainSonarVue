@@ -52,7 +52,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.injectActions(['setUser', 'addPlayer'])
         }
 
-        onCreated(){
+        onMounted(){
             //Initialize game on first
             document.getElementById("cover").style.display = '';
         }

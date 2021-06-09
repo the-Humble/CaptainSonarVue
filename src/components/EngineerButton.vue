@@ -7,7 +7,7 @@
 -->
 <template>
 
-    <section class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
+    <section :id="position.x+'-'+position.y" class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)'}" @click="toggleActive($event)">  <!-- Just one main element per template -->
         <div>
             
         </div>
@@ -24,16 +24,13 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                active: 
-                {
-                    type: Boolean,
-                    default:false
-                }
+                active: false
 
                 
             }
             this.props = { // props are passed in when using this component
                 type: String,
+                id:String,
                 position:
                 {
                     type: Object
@@ -44,6 +41,8 @@
 
             }
 
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['setUser', 'addPlayer'])
             /*
             Components use the getters with ...mapState('module/sub-module', ['getter-name'])
             to access the State data
@@ -71,14 +70,19 @@
 
         onBeforeMount() {
             // called before the component is injected into the DOM
+            
         }
 
         onMounted() {
             if(this.active){
-                document.getElementsByClassName('eng-button').classList.add('active');
+                document.getElementsByClassName(this.position.x+'-'+this.position.y).forEach(element => {
+                    element.classList.add('active');
+                });
                 return;
             }
-            document.getElementsByClassName('eng-button').classList.remove('active');
+            document.getElementsByClassName(this.position.x+'-'+this.position.y).forEach(element =>{
+                element.classList.remove('active');
+            })
         }
 
         onBeforeUpdate() {

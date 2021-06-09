@@ -22,10 +22,9 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world"
             }
             this.props = { // props are passed in when using this component
-                user: String
+                user: Object
             }
 
             /*
