@@ -22,9 +22,8 @@ import Radar from '@/components/Radar.vue'
 
 export default new Router({
     routes: [
-        { path:"/",      name:"Home",  component: Home, props: { name: "DemoApp"} },
+        { path:"/", name:"Game", component: Splash},
         { path:"/about", name:"About", component: About },
-        { path:"/game", name:"Game", component: Splash},
         { path:"/lobby", name:"Lobby", component: Lobby, props: {playerName:""} },
         {path: "/gameplay", name: "Gameplay", component: Game, props: {name:"CaptainSonarVue", user: "Player1", team:"blue"}
         , children :

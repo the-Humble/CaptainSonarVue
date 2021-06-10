@@ -19,7 +19,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                 <message-log></message-log>
             </div>
             <div class = "flex-container">
-                <role-button>HELP</role-button>
+                <role-button> {{ theUser.name }} </role-button>
                 <player-notepad :user="theUser"></player-notepad>
                 <ready-button :user="theUser"></ready-button>
             </div>
@@ -49,7 +49,6 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             }
 
             this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
-            this.injectActions(['setUser', 'addPlayer'])
         }
 
         onMounted(){

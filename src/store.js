@@ -70,6 +70,10 @@ export default new Vuex.Store({
       }
       state.redTeam = teamUpdated;
 
+    },
+
+    UPDATE_PLAYER_DATA:(state,playerUpdated)=>{
+      state.theUser=playerUpdated;
     }
   },
   actions: {
@@ -81,6 +85,9 @@ export default new Vuex.Store({
     },
     updateTeamData({commit}, updatedTeamData){
       commit('UPDATE_TEAM_DATA', updatedTeamData)
+    },
+    updatePlayerData({commit}, playerUpdated){
+      commit('UPDATE_TEAM_DATA', playerUpdated)
     }
   },
   getters: {

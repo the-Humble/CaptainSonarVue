@@ -6,16 +6,16 @@ export default class Team
         this.players = []
         this.health = 4;
 
-        this.captain={}
-        this.officer={}
-        this.engineer={}
-        this.radar={}
+        this.captain=null;
+        this.officer=null;
+        this.engineer=null;
+        this.radar=null;
 
         this.messageLog=""
 
         this.position={
-            x,
-            y
+            x : Number,
+            y : Number
         }
     }
 

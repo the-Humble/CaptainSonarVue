@@ -6,13 +6,11 @@ export default class EngineerRole extends Role
 {
     constructor(roleName, player)
     {
-        super(roleName, player)
+        super(roleName, player);
 
-        this.buttons = []
+        this.buttons = [];
         
         this.createButtons();
-
-        
 
         //directions arrays
         this.westSystems =[0,1,2,3,4,5];
@@ -44,7 +42,7 @@ export default class EngineerRole extends Role
     
     createButtons(){
         for(let i = 0; i< 24; i++){
-            this.buttons.push(new EngineerButton(false))
+            this.buttons.push(new EngineerButton(false));
         }
 
     }

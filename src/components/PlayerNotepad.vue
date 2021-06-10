@@ -8,7 +8,7 @@
 <template>
 
     <section class="notepad-container">
-        <textarea id="notepad" name="notepad" placeholder="Write your notes here" wrap="soft">
+        <textarea id="notepad" name="notepad" placeholder="Write your notes here" wrap="soft" v-model="notes">
         </textarea>
     </section>
 
@@ -26,8 +26,8 @@
                 notes: ""
             }
             this.props = { // props are passed in when using this component
-                user: Object
             }
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
 
             /*
             Components use the getters with ...mapState('module/sub-module', ['getter-name'])
@@ -49,7 +49,7 @@
         }
 
         onCreated() {
-            // called when each instance is initialized
+            this.notes = this.theUser.notes;
         }
 
         onBeforeMount() {
@@ -65,7 +65,7 @@
         }
 
         onUpdated() {
-
+           
         }
 
         onBeforeDestroy() {

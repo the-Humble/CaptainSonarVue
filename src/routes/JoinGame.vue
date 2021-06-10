@@ -27,19 +27,19 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
                 <label class="title-label">Player Roles:</label><br>
             
-                <div class="check-item">
+                <div v-if="CaptainAvailable()" class="check-item">
                 <input type="checkbox" id="checkbox-captain" value="Captain" v-model="playerRoles">
                 <label class="check-label" for="checkbox-captain">Captain</label>
                 </div>
-                <div class="check-item">
+                <div v-if="OfficerAvailable()" class="check-item">
                 <input type="checkbox" id="checkbox-officer" value="Officer" v-model="playerRoles">
                 <label class="check-label" for="checkbox-officer">Officer</label>
                 </div>
-                <div class="check-item">
+                <div v-if="EngineerAvailable()" class="check-item">
                 <input type="checkbox" id="checkbox-engineer" value="Engineer" v-model="playerRoles">
                 <label class="check-label" for="checkbox-engineer">Engineer</label>
                 </div>
-                <div class="check-item">
+                <div v-if="RadarAvailable()" class="check-item">
                 <input type="checkbox" id="checkbox-radar" value="Radar" v-model="playerRoles">
                 <label class="check-label" for="checkbox-radar">Radar</label>
                 </div>
@@ -49,13 +49,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             </form>
             <div class="team-display">
                 <div class="team blue">
+                    <div style="color:blue">BLUE TEAM</div>
                     <div v-for="(player, index) in blueTeam.players" :key = "index">
-                        {{player.name}}
+                        {{player.name}} <br> Roles: {{player.roleNames}}
                     </div>
                 </div>
                 <div class="team red">
+                    <div style="color:red">RED TEAM</div>
                     <div v-for="(player, index) in redTeam.players" :key = "index">
-                        {{player.name}}
+                        {{player.name}} <br> Roles: {{player.roleNames}}
                     </div>
                 </div>
             </div>
@@ -90,12 +92,82 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         initializePlayer(event)
         {
             event.preventDefault();
+            let team = this.redTeam;
+            if(this.playerTeam == "blue"){
+                team=this.blueTeam;
+            }
+
+            if(this.playerRoles.length == 0)
+            {
+                alert("Choose an appropriate role!")
+                return;
+            }
+
+            team.players.forEach(element=>{
+                if(element.name == this.playerName){
+                    alert("Choose a different name!");
+                    return;
+                }
+            })
+
             let player = new Player(this.playerName, this.playerRoles, this.playerTeam);
             this.addPlayer(player);
             this.setUser(player);
             this.playerName = "";
             this.playerTeam = "";
             this.playerRoles = [];
+        }
+
+        CaptainAvailable()
+        {
+            let team = this.redTeam;
+            if(this.playerTeam == "blue"){
+                team=this.blueTeam;
+            }
+            if(team.captain == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        OfficerAvailable()
+        {
+            let team = this.redTeam;
+            if(this.playerTeam == "blue"){
+                team=this.blueTeam;
+            }
+            if(team.officer == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        EngineerAvailable()
+        {
+            let team = this.redTeam;
+            if(this.playerTeam == "blue"){
+                team=this.blueTeam;
+            }
+            if(team.engineer == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        RadarAvailable()
+        {
+            let team = this.redTeam;
+            if(this.playerTeam == "blue"){
+                team=this.blueTeam;
+            }
+            if(team.radar == null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
