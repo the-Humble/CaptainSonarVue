@@ -27,19 +27,19 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
                 <label class="title-label">Player Roles:</label><br>
             
-                <div v-if="CaptainAvailable()" class="check-item">
+                <div v-if="RoleAvailable('Captain')" class="check-item">
                 <input type="checkbox" id="checkbox-captain" value="Captain" v-model="playerRoles">
                 <label class="check-label" for="checkbox-captain">Captain</label>
                 </div>
-                <div v-if="OfficerAvailable()" class="check-item">
+                <div v-if="RoleAvailable('Officer')" class="check-item">
                 <input type="checkbox" id="checkbox-officer" value="Officer" v-model="playerRoles">
                 <label class="check-label" for="checkbox-officer">Officer</label>
                 </div>
-                <div v-if="EngineerAvailable()" class="check-item">
+                <div v-if="RoleAvailable('Engineer')" class="check-item">
                 <input type="checkbox" id="checkbox-engineer" value="Engineer" v-model="playerRoles">
                 <label class="check-label" for="checkbox-engineer">Engineer</label>
                 </div>
-                <div v-if="RadarAvailable()" class="check-item">
+                <div v-if="RoleAvailable('Radar')" class="check-item">
                 <input type="checkbox" id="checkbox-radar" value="Radar" v-model="playerRoles">
                 <label class="check-label" for="checkbox-radar">Radar</label>
                 </div>
@@ -92,10 +92,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         initializePlayer(event)
         {
             event.preventDefault();
-            let team = this.redTeam;
-            if(this.playerTeam == "blue"){
-                team=this.blueTeam;
-            }
+            let team = this.CheckTeam();
 
             if(this.playerRoles.length == 0)
             {
@@ -118,56 +115,39 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.playerRoles = [];
         }
 
-        CaptainAvailable()
-        {
-            let team = this.redTeam;
-            if(this.playerTeam == "blue"){
-                team=this.blueTeam;
-            }
-            if(team.captain == null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        OfficerAvailable()
-        {
-            let team = this.redTeam;
-            if(this.playerTeam == "blue"){
-                team=this.blueTeam;
-            }
-            if(team.officer == null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        EngineerAvailable()
-        {
-            let team = this.redTeam;
-            if(this.playerTeam == "blue"){
-                team=this.blueTeam;
-            }
-            if(team.engineer == null)
-            {
-                return true;
+        RoleAvailable(roleString){
+            let team = this.CheckTeam();
+            switch(roleString){
+                case "Captain":
+                   if(team.captain == null){
+                       return true;
+                   }
+                   break;
+                case "Officer":
+                   if(team.officer == null){
+                       return true;
+                   }
+                   break;
+                case "Engineer":
+                   if(team.engineer == null){
+                       return true;
+                   }
+                   break;
+                case "Radar":
+                   if(team.radar == null){
+                       return true;
+                   }
+                   break;
             }
             return false;
         }
 
-        RadarAvailable()
-        {
-            let team = this.redTeam;
+        CheckTeam(){
+            
             if(this.playerTeam == "blue"){
-                team=this.blueTeam;
+                return this.blueTeam;
             }
-            if(team.radar == null)
-            {
-                return true;
-            }
-            return false;
+            return this.redTeam;
         }
     }
 

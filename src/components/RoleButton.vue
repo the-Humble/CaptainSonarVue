@@ -7,7 +7,10 @@
 -->
 <template>
 
-    <section class="button-container">  <!-- Just one main element per template -->
+    <section v-if="this.theUser.team == 'blue'" class="button-container blue">  <!-- Just one main element per template -->
+        <slot></slot>
+    </section>
+    <section v-else class="button-container red">  <!-- Just one main element per template -->
         <slot></slot>
     </section>
 
@@ -78,10 +81,25 @@
     styles that are specific to this component only, not sub-children
     */
     .button-container {
-        border: 2px solid blue;
+        display: flex;
+        color: white;
+        font-size: 3em;
         width: 20vw;
         height: 10vh;
         margin: 2rem 0rem;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+
+    .blue {
+        border: 2px solid blue;
+        background-color: blue;
+    }
+
+    .red{
+        border: 2px solid red;
+        background-color: red;
     }
 
     .component-item {
