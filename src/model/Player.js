@@ -10,7 +10,7 @@ export default class Player
         this.isReady = false;
     }
 
-    GetRoles(roleString){
+    GetRole(roleString){
         this.roles.forEach(element => {
             if(element.name == roleString){return element}
         });
