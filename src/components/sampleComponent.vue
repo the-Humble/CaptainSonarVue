@@ -3,7 +3,7 @@
     -- user can add their own HTML code here, replaces 'slot' component --
 </some-tag-name>
 
-@copyright (c) 2019. Scott Henshaw. All Rights Reserved.
+@copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
 -->
 <template>
 
@@ -44,6 +44,38 @@
             //this.injectActions(['actionMethod','anotherAction'])
         }
 
+        onBeforeCreate() {
+            // after the Vue instance initializes, before instances are created
+        }
+
+        onCreated() {
+            // called when each instance is initialized
+        }
+
+        onBeforeMount() {
+            // called before the component is injected into the DOM
+        }
+
+        onMounted() {
+            // called
+        }
+
+        onBeforeUpdate() {
+
+        }
+
+        onUpdated() {
+
+        }
+
+        onBeforeDestroy() {
+
+        }
+
+        onDestroyed() {
+
+        }
+
         // Local component methods, used in a template they are called whenever it renders
         doIt( params, $event ) {
             // A method that does something to the props or viewModel, or global state
@@ -52,41 +84,6 @@
         // Local computed methods, recomputed only when reactive properties change
         computeDoIt( params ) {
             this.someData = "has changed";
-        }
-
-        /*
-        Lifecycle hooks, remove any you don't need
-        */
-        onBeforeCreate() {
-            // after the Vue instance initializes, before instances are created
-        }
-
-        onCreated() {
-            // initialized, injections and reactivity registered
-        }
-
-        onBeforeMount() {
-            // after template compile or innerHTML generated
-        }
-
-        onMounted() {
-            //  innerHTML el is attached to parent
-        }
-
-        onBeforeUpdate() {
-            // After data changes and before Virtual DOM is about to change
-        }
-
-        onUpdated() {
-            // After data changes and after the Virtual DOM changes
-        }
-
-        onBeforeUnmount() {
-            // specifically when unmount is called
-        }
-
-        onUnmounted() {
-            // After el has been unmounted
         }
     }
 

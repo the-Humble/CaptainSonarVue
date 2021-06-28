@@ -3,7 +3,7 @@
     -- user can add their own HTML code here, replaces 'slot' component --
 </some-tag-name>
 
-@copyright (c) 2019. Scott Henshaw. All Rights Reserved.
+@copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
 -->
 <template>
 
@@ -40,43 +40,6 @@
 
             */
 
-        }
-
-        onBeforeCreate() {
-            // after the Vue instance initializes, before instances are created
-        }
-
-        onCreated() {
-            // called when each instance is initialized
-        }
-
-        onBeforeMount() {
-            // called before the component is injected into the DOM
-        }
-
-        onMounted() {
-            // called
-        }
-
-        onBeforeUpdate() {
-
-        }
-
-        onUpdated() {
-
-        }
-
-        onBeforeDestroy() {
-
-        }
-
-        onDestroyed() {
-
-        }
-
-        // your local component methods
-        doIt( event ) {
-            // A method that does something to the props or viewModel, or global state
         }
     }
 

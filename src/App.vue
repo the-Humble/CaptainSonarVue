@@ -1,6 +1,6 @@
 <!--
 <pg-app></pg-app>
-@copyright (c) 2018. Scott Henshaw, Clinton Jay Ramonida. All Rights Reserved.
+@copyright (c) 2021 Jose Ignacio Ferrer Vera
 -->
 <template>
 
@@ -95,7 +95,7 @@
     }
 
     input[type=button]:focus {
-        background-color: #D10034;
+        background-color: #1B3155;
         border: 1px solid black;
     }
 
@@ -180,7 +180,7 @@
 
     /* header */
     .header {
-        background: #D10034;
+        background: #1B3155;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
@@ -188,7 +188,7 @@
     }
 
     .logo {
-        background-image:url("assets/vfs_logo.png");
+        background-image:url("assets/pic4117199.webp");
         background-size:100% 100%;
         height: 120px;
         width: 165px;

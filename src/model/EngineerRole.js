@@ -1,6 +1,6 @@
-
+//Copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
 import Role from '@/model/Role.js'
-import EngineerButton from './EngineerButton'
+import buttonToggle from './ButtonToggle'
 
 export default class EngineerRole extends Role
 {
@@ -42,7 +42,7 @@ export default class EngineerRole extends Role
     
     createButtons(){
         for(let i = 0; i< 24; i++){
-            this.buttons.push(new EngineerButton(false));
+            this.buttons.push(new buttonToggle(false));
         }
 
     }

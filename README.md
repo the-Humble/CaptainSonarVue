@@ -1,7 +1,7 @@
 # *** PG20 T3 WebAppFrameworks - CaptainSonar Vue ***
 ---------------------------------------
 Jose Ignacio Ferrer Vera
-07/06/2021
+23/06/2021
 
 Vue.js implementation of the popular 8 player tabletop strategy game "Captain Sonar"
 
@@ -10,8 +10,8 @@ Vue.js implementation of the popular 8 player tabletop strategy game "Captain So
 
 ## Synopsis
 ---------------
-This is an incomplete implementation of the popular tabletop game Captain Sonar. In this implementation, we focus on the use of Vue components to create an easy to understand interface for the game. This interface has been updated to include basic functionality for its layout, but agame logic and team separation is still a work in progress
-
+This is an incomplete implementation of the popular tabletop game Captain Sonar. In this implementation, we focus on the use of Vue components to create an easy to understand interface for the game. This interface has been updated to include basic functionality for its layout, but game logic is still a work in progress
+Teams can now be created
 
 ## Contributors (optional)
 ---------------
@@ -29,28 +29,22 @@ Serve the webpage
 
 # *** How to use ***
 ---------------------------------------
-TODO: Instructions
+Instructions to play Captain Sonar can be found at: https://www.matagot.com/IMG/pdf/SONAR_RULES_EN_lr.pdf
+To use this application, up to 8 devices must be connected to a session
+Make sure to create only one user per connected device
 
-## Code Example (optional)
----------------
-TODO
+The game is played by turns, and teams must make their moves at the same time as the oopponent, but wait until everyone is ready to progress.
 
-
-## API Reference (optional)
----------------
-TODO
-
-## Tests (optional)
----------------
-TODO
 
 # *** Caveats *** (optional)
 ---------------------------------------
-Halfway done
+Game logic and networking has to be implemented
+All opf the interfaces work, but there is no communication beyond the locval level.
 
-_________________________Old ReadMe____________________________________________
+Copyright (C) 2021 Jose Ignacio Ferrer Vera
 
-# VueAppTemplate
+# Old ReadMe
+## VueAppTemplate
 
 Base template for HTML5/CSS3 app using latest ES2017 JavaScript on Vue.js framework.
 

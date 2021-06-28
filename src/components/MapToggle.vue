@@ -3,11 +3,11 @@
     -- user can add their own HTML code here, replaces 'slot' component --
 </some-tag-name>
 
-@copyright (c) 2019. Scott Henshaw. All Rights Reserved.
+@copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
 -->
 <template>
 
-    <section class="component-style eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)' }" @click="toggleActive($event)">  <!-- Just one main element per template -->
+    <section class="component eng-button" :style="{transform: 'translate('+position.x +'px, '+position.y +'px)' }" @click="toggleActive($event)">  <!-- Just one main element per template -->
     </section> 
 
 </template>
@@ -16,16 +16,17 @@
 
     // import other components you use here...
 
-    class EngineerButtonController extends Controller {
+    class MapToggleController extends Controller {
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-   
+                active:Boolean
             }
             this.props = { // props are passed in when using this component
-                engButton: Object,
-                index: Number,
+                
+                xIndex:Number,
+                yIndex:Number,
                 position:
                 {
                     type: Object
@@ -53,44 +54,18 @@
 
         }
 
-        onBeforeCreate() {
-            // after the Vue instance initializes, before instances are created
-        }
+        onMounted(){
+            let team = this.redTeam;
+            if(this.theUser.team=="blue"){
+                team = this.blueTeam;
+            }
+            this.active = team.captain.map.mapState[this.xIndex][this.yIndex]
 
-        onCreated() {
-            // called when each instance is initialized
-            
-            
-        }
-
-        onBeforeMount() {
-            // called before the component is injected into the DOM
-            
-        }
-
-        onMounted() {
-
-            if(this.engButton.active){
-                document.getElementById(this.index).classList.add('active');
+            if(this.active){
+                document.getElementById(this.xIndex+"-"+this.yIndex).classList.add('active');
                 return;
             }
-            document.getElementById(this.index).classList.remove('active');
-            
-        }
-
-        onBeforeUpdate() {
-        }
-
-        onUpdated() {
-
-        }
-
-        onBeforeDestroy() {
-
-        }
-
-        onDestroyed() {
-
+            document.getElementById(this.xIndex+"-"+this.yIndex).classList.remove('active');
         }
 
         setButton(){
@@ -98,25 +73,25 @@
             if(this.theUser.team=="blue"){
                 team = this.blueTeam;
             }
-            team.engineer.buttons[this.index]=this.engButton;
+            team.captain.map.mapState[this.xIndex][this.yIndex]=this.active;
             this.updateTeamData(team);
         }
 
         // your local component methods
         toggleActive( event ) {
-            if(!this.engButton.active){
+            if(!this.active){
                 event.target.classList.add('active');
-                this.engButton.active = true;
+                this.active = true;
                 this.setButton();
                 return;
             }
-            this.engButton.active = false;
+            this.active = false;
             event.target.classList.remove('active');
             this.setButton();
         }
     }
 
-    export default new EngineerButtonController('engineerButton'/* , { subComponent, anotherComponent } */);
+    export default new MapToggleController('mapToggle'/* , { subComponent, anotherComponent } */);
 
 </script>
 <style scoped>
@@ -124,14 +99,13 @@
     Add "scoped" attribute to limit CSS to this component only <style scoped>
     styles that are specific to this component only, not sub-children
     */
-    .component-style {
+    .component {
         z-index: 1;
         position:absolute;
         margin: 0px;
         padding: 0px;
-        border-radius: 3em;
-        height: 2em;
-        width: 2em;
+        height: 25px;
+        width: 29px;
         
     }
 

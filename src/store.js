@@ -1,3 +1,4 @@
+//Copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Player from './model/Player'

@@ -1,9 +1,7 @@
 <!--
 VFS VUE Single File Component
 
-<pg-game user="User"></pg-home>
-
-Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+Copyright (c) 2021 Jose Ignacio Ferrer Vera
 -->
 <template>
 

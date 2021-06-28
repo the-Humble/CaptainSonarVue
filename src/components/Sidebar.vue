@@ -3,7 +3,7 @@ VFS VUE Single File Component
 
 <pg-sidebar></pg-sidebar>
 
-Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
+Copyright (c) 2021 Jose Ignacio Ferrer Vera
 -->
 <template>
 
@@ -29,7 +29,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
                 title:       "My Sidebar",
-                description: "Application Name"
+                description: "Captain Sonar Vue"
             }
         }
     }
