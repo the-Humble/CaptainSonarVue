@@ -20,8 +20,8 @@ Copyright (c) 2021 Jose Ignacio Ferrer Vera
             </div>
             <div class = "flex-container">
                 <role-button> {{ theUser.name }} </role-button>
-                <player-notepad :user="theUser"></player-notepad>
-                <ready-button :user="theUser"></ready-button>
+                <player-notepad></player-notepad>
+                <ready-button></ready-button>
             </div>
         </div>
     </section>
@@ -74,7 +74,6 @@ Copyright (c) 2021 Jose Ignacio Ferrer Vera
     }
 
     .display {
-        border:2px solid green;
         width: 45em;
         height: 30em;
         margin: 2em 0em

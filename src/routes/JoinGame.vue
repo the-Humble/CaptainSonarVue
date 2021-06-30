@@ -43,7 +43,7 @@ Copyright (c) 2021 Jose Ignacio Ferrer Vera
                 </div>
                 <br>
 
-                <input type="submit" value="Create Player" @click = "initializePlayer($event)">
+                <input type="submit" value="Create Player" @click="initializePlayer($event)">
             </form>
             <div class="team-display">
                 <div class="team blue">

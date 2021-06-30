@@ -32,7 +32,7 @@ form {
     color: white;
     font-size: 150%;
 }
-input {height: 1.4em;font-weight:  700;font-size: 1.2em;}
+input {font-weight:  700;}
 
 .debug {
     border:1px dashed red;

@@ -91,7 +91,6 @@
     styles that are specific to this component only, not sub-children
     */
     .notepad-container {
-        border: 2px solid purple;
         width: 15vw;
         height: 15vw;
         margin: 1rem 0rem

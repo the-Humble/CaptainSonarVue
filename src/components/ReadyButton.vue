@@ -7,8 +7,8 @@
 -->
 <template>
 
-    <section class="button-container">  <!-- Just one main element per template -->
-        
+    <section class="button-container" @click="ToggleReady($event)">  <!-- Just one main element per template -->
+        Ready
     </section>
 
 </template>
@@ -24,22 +24,22 @@
             this.vm = {
             }
             this.props = { // props are passed in when using this component
-                user: Object
+                
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['updateTeamData'])
 
-            In the component constructor
+        }
 
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
-
+        ToggleReady(event){
+            event.preventDefault()
+            this.theUser.isReady=!this.theUser.isReady;
+            if(this.theUser.isReady){
+                event.target.classList.add("active");
+                return;
+            }
+            event.target.classList.remove("active");
         }
     }
 
@@ -52,10 +52,24 @@
     styles that are specific to this component only, not sub-children
     */
     .button-container {
-        border: 3px solid yellow;
+        display: flex;
+        border: 3px solid gray;
+        color: white;
+        background-color: gray;
         width: 20vw;
+        font-size: 4em;
         height: 10vh;
-        margin-top: 3rem
+        margin-top: 3rem;
+        user-select: none;
+        border-radius: .2em;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .active{
+        border: 3px solid green;
+        background-color: green;
+        font-weight: bold;
     }
 
     .component-item {

@@ -104,8 +104,8 @@
         position:absolute;
         margin: 0px;
         padding: 0px;
-        height: 25px;
-        width: 29px;
+        height: 1.5625em;
+        width: 1.8125em;
         
     }
 
