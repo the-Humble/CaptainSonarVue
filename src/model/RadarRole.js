@@ -6,6 +6,6 @@ export default class RadarRole extends Role
     constructor(roleName, player)
     {
         super(roleName, player)
-        
+        this.map = new Map();
     }
 }

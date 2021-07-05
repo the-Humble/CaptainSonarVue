@@ -8,12 +8,19 @@
 <template>
 
     <section class="container">  <!-- Just one main element per template -->
-        <div class="component-style"> </div>
+        <div v-for="(nodeY, yIndex) in mapLayout" :key = "yIndex">
+            <div v-for="(nodeX, xIndex) in mapLayout[yIndex]" :key = "xIndex">
+                <div v-if="mapLayout[yIndex][xIndex]">
+                    <map-toggle :id="xIndex+'-'+yIndex" :xIndex="xIndex" :yIndex="yIndex" :position="{x:58+xIndex*(427/15), y:75+yIndex*(370/15)}"></map-toggle>
+                </div>
+            </div>
+        </div>
     </section>
 
 </template>
 <script>
     import Controller from '@/mixins/controller'
+    import mapToggle from '@/components/MapToggle.vue'
 
     // import other components you use here...
 
@@ -22,28 +29,34 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                someData: "Hello world"
+                radar:Object,
+                mapState:Array,
+                mapLayout:Array
             }
-            this.props = {
+            this.props = { 
             }
 
-            /*
-            Components use the getters with ...mapState('module/sub-module', ['getter-name'])
-            to access the State data
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
+            this.injectActions(['updateTeamData'])
+        }
 
-            In the component constructor
+        // your local component methods
+        doIt( event ) {
+            // A method that does something to the props or viewModel, or global state
+        }
 
-                this.computed = {
-                    ...mapState('module/user', ['getName', 'getTeam']),
-                    ...mapState('module/game', ['getId', 'getTeam'])
-                }
-
-            */
-
+        onMounted()
+        {
+            let team = this.redTeam;
+            if(this.theUser.team=="blue"){
+                team = this.blueTeam;
+            }
+            this.mapState = team.radar.map.mapState;
+            this.mapLayout = team.radar.map.mapLayout;
         }
     }
 
-    export default new RadarController('radar'/* , { subComponent, anotherComponent } */);
+    export default new RadarController('radar' , { mapToggle} );
 
 </script>
 <style scoped>
@@ -52,22 +65,18 @@
     styles that are specific to this component only, not sub-children
     */
     .container{
-        display: flex;
         height: 100%;
-        width: 100%
+        width: 100%;
+        flex: 1;
+        background: url('../assets/radar.jpg');
+        background-size: 100% 100%;
 
     }
 
     .component-style {
         flex: 1;
-        background: url('../assets/radar.jpg');
         background-size: 100% 100%;
     }
 
-    .component-item {
-        flex-grow: inherit;
-        flex-shrink: inherit;
-        order: inherit;
-    }
 
 </style>
