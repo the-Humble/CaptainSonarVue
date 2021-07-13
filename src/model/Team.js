@@ -19,6 +19,8 @@ export default class Team
             x : Number,
             y : Number
         }
+
+        this.activeTurn = false;
     }
 
 }

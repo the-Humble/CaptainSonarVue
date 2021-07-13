@@ -1,5 +1,5 @@
 //Copyright (c) 2021. Jose Ignacio Ferrer. All Rights Reserved.
-export default class Map
+export default class GameMap
 {
     constructor(){
         this.mapState = [
