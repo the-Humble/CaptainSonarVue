@@ -43,7 +43,7 @@ Copyright (c) 2021 Jose Ignacio Ferrer Vera
                 </div>
                 <br>
 
-                <input type="submit" value="Create Player" @click="initializePlayer($event)">
+                <input type="button" value="Create Player" @click="initializePlayer($event)">
             </form>
             <div class="team-display">
                 <div class="team blue">
@@ -83,34 +83,40 @@ Copyright (c) 2021 Jose Ignacio Ferrer Vera
             this.props = {
             }
 
-            this.injectGetters(['theUser', 'blueTeam', 'redTeam'])
-            this.injectActions(['setUser', 'addPlayer'])
+            this.injectGetters(['theUser', 'blueTeam', 'redTeam', 'game'])
+            this.injectActions(['setUser', 'addPlayer', 'loadPlayerList'])
         }
 
         initializePlayer(event)
         {
             event.preventDefault();
-            let team = this.CheckTeam();
 
-            if(this.playerRoles.length == 0)
-            {
-                alert("Choose an appropriate role!")
-                return;
-            }
+            this.loadPlayerList()
+            .then( () => {
+                let team = this.CheckTeam();
 
-            team.players.forEach(element=>{
-                if(element.name == this.playerName){
-                    alert("Choose a different name!");
+                if(this.playerRoles.length == 0)
+                {
+                    alert("Choose an appropriate role!")
                     return;
                 }
-            })
 
-            let player = new Player(this.playerName, this.playerRoles, this.playerTeam);
-            this.addPlayer(player);
-            this.setUser(player);
-            this.playerName = "";
-            this.playerTeam = "";
-            this.playerRoles = [];
+                team.players.forEach(element=>{
+                    if(element.name == this.playerName){
+                        alert("Choose a different name!");
+                        return;
+                    }
+                })
+
+                let player = new Player(this.playerName, this.playerRoles, this.playerTeam, this.game.id);
+                this.addPlayer(player);
+                this.setUser(player);
+                this.playerName = "";
+                this.playerTeam = "";
+                this.playerRoles = [];
+            })
+            .catch(error => console.log(error));
+
         }
 
         RoleAvailable(roleString){

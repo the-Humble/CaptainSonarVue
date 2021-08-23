@@ -1,7 +1,7 @@
 # *** PG20 T3 WebAppFrameworks - CaptainSonar Vue ***
 ---------------------------------------
 Jose Ignacio Ferrer Vera
-12/07/2021
+19/07/2021
 
 Vue.js implementation of the popular 8 player tabletop strategy game "Captain Sonar"
 
@@ -13,6 +13,8 @@ Vue.js implementation of the popular 8 player tabletop strategy game "Captain So
 This is an incomplete implementation of the popular tabletop game Captain Sonar. In this implementation, we focus on the use of Vue components to create an easy to understand interface for the game. This interface has been updated to include basic functionality for its layout, but game logic is still a work in progress
 Teams can now be created
 Basic Server implementations and functions have been added
+
+Migration to the cloud needs to be completed
 
 ## Contributors (optional)
 ---------------

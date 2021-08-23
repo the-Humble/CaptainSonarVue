@@ -9,12 +9,28 @@ import EngineerRole from './model/EngineerRole.js'
 import RadarRole from './model/RadarRole.js'
 import Axios from 'axios'
 
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
+const fbConfig = {
+  apiKey: "AIzaSyDca37lwDD4O_HUL9GVb_Omh21rTQNn-_w",
+  authDomain: "captainsonarvue.firebaseapp.com",
+  databaseURL: "https://captainsonarvue.firebaseio.com",
+  projectId: "captainsonarvue"
+
+}
+const fb = firebase.initializeApp(fbConfig)
+const db = {
+  firestore: fb.firestore()
+}
+
 Vue.use(Vuex, Axios)
 
 Axios.defaults.baseURL='http://localhost:3000'
 
 export default new Vuex.Store({
   state: {
+    db: firebase.initializeApp(fbConfig, 'CaptainSonarVue').firestore(),
     currentUser: new Player(),
     loggedIn: false,
     game: new Game()
@@ -114,6 +130,33 @@ export default new Vuex.Store({
     }
   },
   actions: {
+
+    loadPlayerList({commit}) {
+
+      return new Promise((resolve, reject) => {
+        let playerList = [];
+        let playerCollection = this.state.db.collection("player");
+
+        let query = playerCollection.where("gameID", "==", this.state.game.id);
+
+
+        query.get()
+          .then(resultList => {
+            resultList.docs.forEach(doc => {
+              let tempPlayer = new Player();
+              tempPlayer.populate(doc);
+
+              commit('ADD_PLAYER', tempPlayer);
+            })
+            resolve();
+          })
+      });
+      
+
+
+
+    },
+
     setUser({commit}, aUser){
       commit('SET_CURRENT_USER', aUser)
     },
@@ -132,11 +175,17 @@ export default new Vuex.Store({
         .then(data=>commit('UPDATE_GAME_DATA', data.payload))
         .catch(error => console.log(error))
     },
+
     addPlayer({commit}, newPlayer){
-      Axios.post('/api/game/addPlayer', newPlayer)
-      .then(response => response.data)
-      .then(data=>commit('ADD_PLAYER', data.payload))
-      .catch(error)
+      let playerObj = {
+        gameID : newPlayer.gameID,
+        name : newPlayer.name,
+        roleNames : newPlayer.roleNames,
+        team : newPlayer.team,
+        isReady : newPlayer.isReady
+      }
+      this.state.db.collection("player").add(playerObj);
+      commit('ADD_PLAYER', newPlayer);
     },
     nextTurn({commit}){
       Axios.post('/api/game/nextTurn')
@@ -185,6 +234,7 @@ export default new Vuex.Store({
     blueTeam: state=> state.game.blueTeam,
     redTeam: state => state.game.redTeam,
     currentTurn: state => state.game.currentTurn,
+    game: state => state.game,
   },
   
 })

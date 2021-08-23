@@ -12,10 +12,6 @@ const Router = Express.Router();
 playerReady
 */
 
-Router.get('/playerReady', (request, response) => {
-    //TODO: get the ready state for the player
-
-})
 
 Router.post('/playerReady', (request, response) => {
     //TODO: post the ready state for the player
